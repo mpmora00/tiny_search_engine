@@ -9,7 +9,7 @@ The common directory is a library of code, that will eventually be shared by the
 It contains 6 files: `Pagedir.h`, `Pagedir.c`, `index.c`, `index.h`, `word.h`and `word.c` and several important functions which will be explained below
 
 ### Usage
-To build `common.a`, run `make`. 
+To build `common.a`, run `make`.
 To clean up, run `make clean`.T
 
 ### File Overview
@@ -27,9 +27,9 @@ int pagesaver(webpage_t *page, char *page_dir, int current_id);
 /* Check if a directory is existent.
 * Return:
 *   returns true if the directory exists
-*   false if it does not exist 
+*   false if it does not exist
 */
-bool directory_exists(char *name_dir); 
+bool directory_exists(char *name_dir);
 
 /* Verifies whether dir is indeed a Crawler-produced directory.
  *
@@ -52,7 +52,7 @@ bool valid_filename(char *index_filename);
  * Returns:
  *   NULL if there was an error opening/reading the file or saving the website
  *   webpage pointer if everything was done correctly
- * 
+ *
  * Caller must remember to free the memory for the webside
  */
 webpage_t* page_load(char *page_dir, char *filename);
@@ -68,7 +68,7 @@ webpage_t* page_load(char *page_dir, char *filename);
  *   A lowercase string if no errors where encountered
  *
  */
-char* NormalizeWord(char* word); 
+char* NormalizeWord(char* word);
 ```
 
 3. The ``index`` module is defined in `index.h` and implemented in `index.c` and it has the following functions:
@@ -79,7 +79,7 @@ char* NormalizeWord(char* word);
  * Returns:
  *   1 if there was any error
  *   0 if the function exited correctly
- * 
+ *
  * The caller is later responsible of freeing this hashtable outside the function
  */
 int index_build(char *page_dir, hashtable_t* hash_table);
@@ -101,57 +101,16 @@ void index_delete(hashtable_t* hash_table);
  *
  * Returns:
  *      1 if an error was encountered
- *      0 if the program exited correctly 
+ *      0 if the program exited correctly
  */
 int index_load(FILE *fp_in, hashtable_t* hash_table);
 ```
 
-#### Saved file format 
-
-##### Pagesave
-The file will be saved with the name "page_dir/ID" meaning that it will be saved inside the given page directory with the name of the current ID. The file will have the following format:
-1. First line will be the page URL on the first line.
-2. Second line will be the depth of the page (where the seed is depth 0).
-3. Third line will be the page contents.
-
-##### IndexSaver
-The file will be saved with the name "filename" meaning that it will be saved under whatever parameter filename was given. The file will have the following format:
-
-1. one line per word
-2. each line provides the word and one or more (docID, count) pairs, in the format "word docID count [docID count]…"
-    - where word is a string of lower-case letters,
-    - where docID is a positive non-zero integer,
-    - where count is a positive non-zero integer,
-    - where the word and integers are separated by spaces.
-    - Within the file, the lines may be in any order.
-    - Within a line, the docIDs may be in any order.
-
-#### Implementation
-Here we will explain some of the functions implemented
-
-##### Directory_exists
-In order to check if the directory exists in the function `directory_exists`, a new file is attempted to be written in that directory. If the file is not able to be opened, it means that the directory does not exist. 
-
-After this function is function finished running, a new file called `.crawler` will be have made in the directory. 
-
-##### page_load
-- From the directory and the filename provided, allocates the memory to create a filename with the format "directory/filename"
-- Opens the file
-- Reads the first and second line and saves then as URL and depth correspondigly
-- Reads the rest of the file and saves it as the HTML 
-- Creates a website from the strings read
-- Frees all of the allocated memory and closes the file
-
-##### index_build
-- Loops through every document in a directory and creates a webpage
-- Loops through every word in that webpage and adds it to the index accordingly (only words with 3 or more characters)
-- Returns an index (or a hashtable of counters)
-
 ### Assumptions
 
 We are assuiming the the user has provided for the `pagesaver` function:
-- A valid webpage with an HTML inside it 
-- A valid page directory that exists 
+- A valid webpage with an HTML inside it
+- A valid page directory that exists
 - A positivie current ID
 
 Moreover, the user must delete/free the webpage space outside of this function
