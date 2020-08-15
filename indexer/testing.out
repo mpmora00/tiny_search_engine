@@ -1,0 +1,90 @@
+bash testing.sh
+____________________________________________
+TESTING INDEXER.c:
+
+######################################
+Test that should fail:
+
+Less than 3 arguments given
+Error: Incorrect number of parameters given.
+Error: Incorrect number of parameters given.
+
+More than 3 arguments given
+Error: Incorrect number of parameters given.
+
+Nonexistent directory given
+Error: Directory given madeUpDir is not a valid directory
+
+Invalid filename given
+Error: index file ../crawler/data1 is not a valid pathname
+
+Noncrawler directory given
+Error: Directory given ../querier is not a valid directory
+
+######################################
+Test that should pass
+
+Given a file that already exists --> see test_file1
+
+Given different pageDirectory format (../crawler/dir/) --> see test_file2
+
+data 1 directory -> see result/data1
+
+data 2 directory -> see result/data2
+
+data 3 directory -> see result/data3
+
+data 4 directory -> see result/data4
+
+____________________________________________
+Testing INDEXTEST.c:
+
+######################################
+Test that should fail:
+
+Less than 3 arguments given
+Error: Incorrect number of parameters given.
+Error: Incorrect number of parameters given.
+
+More than 3 arguments given
+Error: Incorrect number of parameters given.
+
+Nonexistent oldIndexFilename given
+Error opening first file
+
+Invalid newIndexFilename given
+Error: index file ../crawler/data1 is not a valid pathname
+
+Empty file given as oldIndexFilename
+
+######################################
+Test that should pass
+
+Testing indextest with the index file data1
+
+Sorting the files...
+
+Comparing the files
+Result: No differences found between files
+
+Testing indextest with the index file data2
+
+Sorting the files...
+
+Comparing the files
+Result: No differences found between files
+
+Testing indextest with the index file data3
+
+Sorting the files...
+
+Comparing the files
+Result: No differences found between files
+
+Testing indextest with the index file data4
+
+Sorting the files...
+
+Comparing the files
+Result: No differences found between files
+

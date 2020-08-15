@@ -1,0 +1,5 @@
+# Any executable binary programs your Makefile produces
+indexer.o
+indextest.o
+indexer
+indextest

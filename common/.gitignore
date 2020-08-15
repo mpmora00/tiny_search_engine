@@ -1,0 +1,5 @@
+# Any executable binary programs your Makefile produces
+pagedir.o
+common.a
+word.o
+index.o

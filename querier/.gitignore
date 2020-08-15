@@ -1,0 +1,7 @@
+# Any executable binary programs your Makefile produces
+querier
+querier.o
+pair.o
+iterate.o
+fuzzquery
+fuzzquery.o

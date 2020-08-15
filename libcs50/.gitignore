@@ -1,0 +1,10 @@
+# Any executable binary programs your Makefile produces
+libcs50.a
+counters.o
+file.o 
+hashtable.o
+jhash.o
+memory.o
+bag.o 
+set.o
+webpage.o
