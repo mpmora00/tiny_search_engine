@@ -3,6 +3,8 @@ Tiny Search Engine (TSE) is a command-line search program written in C that will
 
 Keywords like 'and', 'or' and 'not' are also functional when searching for specific word patterns. This program is capable of crawling webpages to access subpages, parsing web content, and responding to user’s UI queries.
 
+<img src="tinySE.gif" width="50%" />
+
 ## Usage
 To build, run `make`.
 To clean up, run `make clean`.
